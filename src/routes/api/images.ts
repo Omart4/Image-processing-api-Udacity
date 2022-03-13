@@ -1,8 +1,8 @@
 import express from "express";
-const images = express.Router()
+const images = express.Router();
 
-images.get('/',(req,res)=>{
-    res.send("Images Route")
-})
+images.get("/", (req, res) => {
+  res.send("Images Route");
+});
 
 export default images;
