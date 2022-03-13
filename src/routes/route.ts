@@ -1,5 +1,5 @@
 import express from "express";
-import { ValidateParam, ReturnParam } from "../middleware/index";
+import { ValidateParam, ReturnParam } from "../middleware/bundler";
 import images from "./api/images";
 const routes = express.Router();
 
