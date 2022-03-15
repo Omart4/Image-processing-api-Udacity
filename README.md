@@ -23,15 +23,20 @@ This api is used to process images entered by the user and resizes them based on
 `npm i prettier`
 `npm i --save-dev @types/prettier`
 
-### 5.Sharp and its types (for actually processing the images)
+### 5.Eslint 
+`npm i --save-dev eslint`
+`npm i --save-dev eslint-config-prettier`
+`npm i --save-dev eslint-plugin-prettier`
+
+### 6.Sharp and its types (for actually processing the images)
 `npm i sharp`
 `npm i --save-dev @types/sharp`
 
-### 6.Supertest
+### 7.Supertest
 `npm i supertest`
 `npm i --save-dev @types/supertest`
 
-### 7. Typescript
+### 8. Typescript
 `npm i -g typescript`
 
 ## Commands 
@@ -50,6 +55,9 @@ This api is used to process images entered by the user and resizes them based on
 
 ### 5. To run Prettier:
 `npm run prettier`
+
+### 6. To run Eslint:
+`npm run lint`
 
 ## Notes
 
