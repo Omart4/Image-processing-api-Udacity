@@ -1,4 +1,5 @@
 import express from "express";
+import {exists} from '../utils/imageExists'
 
 export const ValidateParam = (
   req: express.Request,
