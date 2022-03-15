@@ -1,5 +1,5 @@
 import express from "express";
-import {exists} from '../utils/imageExists'
+import { exists } from "../utils/imageExists";
 
 export const ValidateParam = (
   req: express.Request,
@@ -30,9 +30,9 @@ export const ValidateParam = (
       }
     }
   }
-  if(exists(`../../images/${query["file"]}.jpg`)){
+  if (exists(`../../images/${query["file"]}.jpg`)) {
     next();
-  }else{
-    res.status(400).send("File doesn't exist")
+  } else {
+    res.status(400).send("File doesn't exist");
   }
 };

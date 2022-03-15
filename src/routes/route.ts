@@ -8,6 +8,6 @@ routes.get("/", (req, res) => {
   res.send("Main Router");
 });
 
-routes.use("/images", ValidateParam, ResizeImage ,images);
+routes.use("/images", ValidateParam, ResizeImage, images);
 
 export default routes;
