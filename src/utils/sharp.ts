@@ -8,6 +8,5 @@ export const sharpResize = async (
 ): Promise<Sharp> => {
   const sourcePath = Path.join(__dirname, `../../images/${file}.jpg`);
   const editted = await sharp(sourcePath).resize(width, height).jpeg();
-  console.log(sourcePath);
   return editted;
 };
