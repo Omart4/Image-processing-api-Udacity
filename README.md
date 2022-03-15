@@ -50,3 +50,8 @@ This api is used to process images entered by the user and resizes them based on
 
 ### 5. To run Prettier:
 `npm run prettier`
+
+## Notes
+
+### Server is running on port 8000 and the url would look like this `http://localhost:8000/`
+### To process an image your entered url should look like `http://localhost:8000/api/images?file={your_file_name}&width={desired_width}&height={desired_height}`
