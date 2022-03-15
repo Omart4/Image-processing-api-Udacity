@@ -23,7 +23,7 @@ const ResizeImage = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
     const h = parseInt(height);
     try {
         let imagePath = `${f} ${w}X${h}.jpg`;
-        let finalPath = `/results/${f} ${w}X${h}.jpg`;
+        let finalPath = path_1.default.join(__dirname, `../../results/`);
         const imageExists = yield (0, imageExists_1.exists)(`../../results/${imagePath}`);
         //First Checks if image exists in the results
         if (imageExists) {
@@ -32,7 +32,7 @@ const ResizeImage = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         //If it doesn't this would create the image and put it in the folder
         else if (!imageExists) {
             const image = yield (0, sharp_1.sharpResize)(f, w, h);
-            image.toFile(finalPath, (err) => {
+            image.toFile(path_1.default.join(finalPath, imagePath), (err) => {
                 if (err) {
                     res.status(403).send({
                         ok: "failed",
@@ -40,7 +40,7 @@ const ResizeImage = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
                     });
                 }
                 else {
-                    res.sendFile(`images/${imagePath}`, { root: path_1.default.join(__dirname, '../../') });
+                    res.sendFile(`results/${imagePath}`, { root: path_1.default.join(__dirname, '../../') });
                 }
             });
         }

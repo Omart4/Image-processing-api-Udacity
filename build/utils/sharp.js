@@ -16,8 +16,9 @@ exports.sharpResize = void 0;
 const sharp_1 = __importDefault(require("sharp"));
 const path_1 = __importDefault(require("path"));
 const sharpResize = (file, width, height) => __awaiter(void 0, void 0, void 0, function* () {
-    const sourcePath = path_1.default.join(__dirname, `../../images/${file}.jp`);
+    const sourcePath = path_1.default.join(__dirname, `../../images/${file}.jpg`);
     const editted = yield (0, sharp_1.default)(sourcePath).resize(width, height).jpeg();
+    console.log(sourcePath);
     return editted;
 });
 exports.sharpResize = sharpResize;
