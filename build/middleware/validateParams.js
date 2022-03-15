@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ValidateParam = void 0;
+const imageExists_1 = require("../utils/imageExists");
 const ValidateParam = (req, res, next) => {
     const { query } = req;
     const parameters = ["file", "width", "height"];
@@ -23,6 +24,11 @@ const ValidateParam = (req, res, next) => {
             }
         }
     }
-    next();
+    if ((0, imageExists_1.exists)(`../../images/${query["file"]}.jpg`)) {
+        next();
+    }
+    else {
+        res.status(400).send("File doesn't exist");
+    }
 };
 exports.ValidateParam = ValidateParam;

@@ -15,19 +15,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResizeImage = void 0;
 const path_1 = __importDefault(require("path"));
 const imageExists_1 = require("../utils/imageExists");
+const sharp_1 = require("./sharp");
 const ResizeImage = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let { file, width, height } = req.query;
     const f = file;
-    const w = width;
-    const h = height;
+    const w = parseInt(width);
+    const h = parseInt(height);
     try {
-        let imagePath = `${f}.jpg`;
-        const imageExists = yield (0, imageExists_1.exists)(`../../images/${imagePath}`);
+        let imagePath = `${f} ${w}X${h}.jpg`;
+        let finalPath = `/results/${f} ${w}X${h}.jpg`;
+        const imageExists = yield (0, imageExists_1.exists)(`../../results/${imagePath}`);
+        //First Checks if image exists in the results
         if (imageExists) {
             res.sendFile(`images/${imagePath}`, { root: path_1.default.join(__dirname, '../../') });
         }
-        else {
-            res.status(400).send("Image not found");
+        //If it doesn't this would create the image and put it in the folder
+        else if (!imageExists) {
+            const image = yield (0, sharp_1.sharpResize)(f, w, h);
+            image.toFile(finalPath, (err) => {
+                if (err) {
+                    res.status(403).send({
+                        ok: "failed",
+                        message: err.message,
+                    });
+                }
+                else {
+                    res.sendFile(`images/${imagePath}`, { root: path_1.default.join(__dirname, '../../') });
+                }
+            });
         }
     }
     catch (err) {

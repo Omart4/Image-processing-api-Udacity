@@ -30,5 +30,9 @@ export const ValidateParam = (
       }
     }
   }
-  next();
+  if(exists(`../../images/${query["file"]}.jpg`)){
+    next();
+  }else{
+    res.status(400).send("File doesn't exist")
+  }
 };
