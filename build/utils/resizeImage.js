@@ -27,7 +27,7 @@ const ResizeImage = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
         const imageExists = yield (0, imageExists_1.exists)(`../../results/${imagePath}`);
         //First Checks if image exists in the results
         if (imageExists) {
-            res.sendFile(`images/${imagePath}`, {
+            res.sendFile(`results/${imagePath}`, {
                 root: path_1.default.join(__dirname, "../../"),
             });
         }
@@ -42,9 +42,7 @@ const ResizeImage = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
                     });
                 }
                 else {
-                    res.sendFile(`results/${imagePath}`, {
-                        root: path_1.default.join(__dirname, "../../"),
-                    });
+                    res.sendFile(path_1.default.join(finalPath, imagePath));
                 }
             });
         }

@@ -18,7 +18,7 @@ export const ResizeImage = async (
     const imageExists = await exists(`../../results/${imagePath}`);
     //First Checks if image exists in the results
     if (imageExists) {
-      res.sendFile(`images/${imagePath}`, {
+      res.sendFile(`results/${imagePath}`, {
         root: Path.join(__dirname, "../../"),
       });
     }
@@ -32,9 +32,7 @@ export const ResizeImage = async (
             message: err.message,
           });
         } else {
-          res.sendFile(`results/${imagePath}`, {
-            root: Path.join(__dirname, "../../"),
-          });
+          res.sendFile(Path.join(finalPath,imagePath));
         }
       });
     }

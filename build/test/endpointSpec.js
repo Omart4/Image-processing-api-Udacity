@@ -16,8 +16,8 @@ const supertest_1 = __importDefault(require("supertest"));
 const main_1 = __importDefault(require("../main"));
 const request = (0, supertest_1.default)(main_1.default);
 describe("Testing multiple possible endpoints", () => {
-    it("Should return status code 200 for fjord.jpg 200X100", () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get('/api/images?file=fjord&width=100&height=50');
+    it("Should return status code 200 for santamonica.jpg 100X50", () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield request.get('/api/images?file=santamonica&width=100&height=50');
         expect(response.status).toBe(200);
     }));
     it("Should return status code 403 for dog.jpg 200X100", () => __awaiter(void 0, void 0, void 0, function* () {
@@ -27,5 +27,9 @@ describe("Testing multiple possible endpoints", () => {
     it("Should return status code 400 for fjord.jpg dX100", () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield request.get('/api/images?file=fjord&width=d&height=100');
         expect(response.status).toBe(400);
+    }));
+    it("Should return status code 200 for icelandwaterfall.jpg 600X300", () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield request.get('/api/images?file=icelandwaterfall&width=600&height=300');
+        expect(response.status).toBe(200);
     }));
 });
