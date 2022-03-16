@@ -36,7 +36,7 @@ const ResizeImage = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
             const image = yield (0, sharp_1.sharpResize)(f, w, h);
             image.toFile(path_1.default.join(finalPath, imagePath), (err) => {
                 if (err) {
-                    res.status(403).send({
+                    res.status(400).send({
                         ok: "failed",
                         message: err.message,
                     });

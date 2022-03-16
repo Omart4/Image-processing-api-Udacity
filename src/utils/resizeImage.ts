@@ -27,7 +27,7 @@ export const ResizeImage = async (
       const image = await sharpResize(f, w, h);
       image.toFile(Path.join(finalPath, imagePath), (err: Error) => {
         if (err) {
-          res.status(403).send({
+          res.status(400).send({
             ok: "failed",
             message: err.message,
           });
